@@ -4,10 +4,11 @@
 #include "utils.h"
 
 void write2SDCanId(int id) {
-    for (int i = 0; i < CAN_MSG_SIZE; i++) {
+    for (int i = 0; i < CAN_MSG_SIZE - 1; i++) {
       dataFile.print(CAN_DATA[id][i]);
-      dataFile.print(" ");
+      dataFile.print(" ");  // space in between
     }
+    dataFile.print(CAN_DATA[id][CAN_MSG_SIZE - 1]);
 }
 
 void write2SDCallback()

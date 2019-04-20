@@ -17,7 +17,8 @@ void setupSerial() {
 void createLogHeader() {
     header = "time,";
     for (int i = 0; i < MAX_CAN_ID - 1; i++) {
-      header += String(i);
+      header += "0x";
+      header += String(i, 15);
       header += ",";  // .csv format
     }
     header += String(MAX_CAN_ID - 1);
