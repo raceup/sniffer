@@ -28,4 +28,20 @@ char fileName[16];  // SDcard uses 8.3 names so 16 bytes is enough NOte room for
 unsigned int nr = 1;  // # of log file
 File dataFile; // to save in SD
 
+typedef struct
+    {
+        uint8_t data[8]; // 8 bytes
+    } SNIFFED_FRAME;
+
+    const uint8_t idsSize = 40; // # of CAN IDs to save
+    typedef struct
+    {
+        int timeMs;
+        SNIFFED_FRAME frames[idsSize]; // frames at given time
+    } TIMED_TELEMETRY;
+
+const uint8_t bufferSize = 100; // 1 each 50 ms -> to save 500 ms (½ second) we need 100 rows
+int currentRow = 0;
+TIMED_TELEMETRY telemetryBuffer[bufferSize];
+
 #endif // DATA_H

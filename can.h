@@ -143,7 +143,7 @@ void writeToStruct(CAN_FRAME &frame)
   }
 
   int col = selectColumn(frame.id);
-  memcpy(frame.data.bytes, telemetryBuffer[currentRow].frames[col], 8);
+  memcpy(frame.data.bytes, &telemetryBuffer[currentRow].frames[col], 8);
 }
 
 #endif // CAN_H
