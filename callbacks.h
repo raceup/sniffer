@@ -32,4 +32,30 @@ void save2SDCallback()
     dataFile = SD.open(fileName, FILE_WRITE);
 }
 
+//select right where put data
+
+
 #endif // CALLBACKS_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

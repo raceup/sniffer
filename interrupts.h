@@ -4,7 +4,8 @@
 #include "can.h"
 
 void callbackFrame(CAN_FRAME *frame)
-{
+{	
+	writeToStruct(*frame);
     saveFrame(*frame);
     printFrame(*frame);
 }
