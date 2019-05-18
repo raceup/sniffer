@@ -76,4 +76,30 @@ bool setupCAN() {
     return true;
 }
 
+bool setupMatrix()
+    {
+        typedef struct
+        {
+            uint8_t data[8]; // 8 bytes
+        } SNIFFED_FRAME;
+
+        const uint8_t idsSize = 40; // # of CAN IDs to save
+        typedef struct
+        {
+            int timeMs;
+            SNIFFED_FRAME frames[idsSize]; // frames at given time
+        } TIMED_TELEMETRY;
+
+        const uint8_t bufferSize = 100; // 1 each 50 ms -> to save 500 ms (½ second) we need 100 rows
+        int currentRow = 0;
+        TIMED_TELEMETRY telemetryBuffer[bufferSize];
+
+        for (int i = 0; i < bufferSize; i++)
+        {
+            telemetryBuffer[i].timeMs = 0;
+            memset(telemetryBuffer[i].frames, 0, 320); //320 = 8*40
+        }
+        return true;
+    }
+
 #endif // SETUP_H

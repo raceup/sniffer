@@ -27,8 +27,16 @@ void setup() {
   if (!ok) {
     logToSerial("ERROR! CANNOT SETUP SD!");
   }
+  
+  //setup matrix 
+  ok &= setupMatrix();
+  if (!ok) {
+    logToSerial("ERROR! CANNOT SETUP MATRIX!");
+  }
 
   goodSetup = ok;
+
+
 }
 
 void loop() {
